@@ -1,11 +1,11 @@
 module Web::Controllers::Posts
-  class Index
+  class Show
     include Web::Action
 
-    expose :posts
+    expose :post
 
     def call(params)
-      @posts = PostRepository.new.posts_with_authors
+      @post = PostRepository.new.find_with_author(params[:id])
     end
   end
 end

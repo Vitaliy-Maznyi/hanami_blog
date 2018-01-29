@@ -1,11 +1,12 @@
 module Web::Controllers::Posts
-  class Index
+  class New
     include Web::Action
 
-    expose :posts
+    before :authenticate!
+
+    expose :post
 
     def call(params)
-      @posts = PostRepository.new.posts_with_authors
     end
   end
 end
