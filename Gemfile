@@ -5,6 +5,7 @@ gem 'hanami',       '~> 1.1'
 gem 'hanami-model', '~> 1.1'
 gem 'puma'
 gem 'slim'
+gem 'bcrypt'
 
 gem 'pg'
 
@@ -16,6 +17,7 @@ end
 
 group :test, :development do
   gem 'dotenv', '~> 2.0'
+  gem 'pry-byebug'
 end
 
 group :test do

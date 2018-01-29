@@ -1,0 +1,8 @@
+ul
+  - if user_signed_in?
+    li
+      = form_for :session, routes.destroy_session_path, method: :delete do
+        = submit "Sign out, #{current_user.email}"
+  - else
+    li= link_to 'sign up', routes.new_registration_path
+    li= link_to 'sign in', routes.new_session_path

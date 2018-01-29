@@ -1,0 +1,9 @@
+- if flash[:notice]
+  = flash[:notice]
+- if flash[:errors] && flash[:errors].is_a?(Array)
+  ul
+    - flash[:errors].each do |error|
+      li
+        = "#{error.first.to_s} " "#{error.last.last.to_s}"
+- else
+  = flash[:errors]

@@ -4,5 +4,7 @@ html
     title hanami_blog
     = favicon
   body
+    = render partial: 'shared/navbar'
+    = render partial: 'shared/flash'
     h1 My awesome hanami blog!
     = yield
