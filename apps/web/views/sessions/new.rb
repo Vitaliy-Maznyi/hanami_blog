@@ -9,9 +9,5 @@ module Web::Views::Sessions
         submit 'Sign in'
       end
     end
-
-    def errors
-      binding.pry
-    end
   end
 end

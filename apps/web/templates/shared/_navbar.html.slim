@@ -1,10 +1,24 @@
-ul
-  li= link_to 'home', routes.root_path
-  li= link_to 'new post', routes.new_post_path
-  - if user_signed_in?
-    li
-      = form_for :session, routes.destroy_session_path, method: :delete do
-        = submit "Sign out, #{current_user.email}"
-  - else
-    li= link_to 'sign up', routes.new_registration_path
-    li= link_to 'sign in', routes.new_session_path
+nav.navbar.navbar-expand-lg.navbar-light.header
+  .navbar-brand
+    = link_to routes.root_path
+      = img(src: '/assets/logo.png', class: 'w-25')
+    | Hanami blog
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+
+  .collapse.navbar-collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        = link_to 'home', routes.root_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'new post', routes.new_post_path, class: 'nav-link'
+    ul.navbar-nav
+      - if user_signed_in?
+        li.nav-item
+          = form_for :session, routes.destroy_session_path, method: :delete do
+            = submit "Sign out, #{current_user.email}", class: 'nav-link btn btn-dark text-white'
+      - else
+        li.nav-item
+          = link_to 'sign up', routes.new_registration_path, class: 'nav-link btn btn-dark text-white'
+        li.nav-item.ml-2
+          = link_to 'sign in', routes.new_session_path, class: 'nav-link btn btn-dark text-white'

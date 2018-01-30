@@ -6,6 +6,7 @@ gem 'hanami-model', '~> 1.1'
 gem 'puma'
 gem 'slim'
 gem 'bcrypt'
+gem 'sass'
 
 gem 'pg'
 
