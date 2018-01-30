@@ -1,4 +1,6 @@
 ul
+  li= link_to 'home', routes.root_path
+  li= link_to 'new post', routes.new_post_path
   - if user_signed_in?
     li
       = form_for :session, routes.destroy_session_path, method: :delete do

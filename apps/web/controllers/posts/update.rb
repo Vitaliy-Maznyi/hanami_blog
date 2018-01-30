@@ -1,5 +1,5 @@
 module Web::Controllers::Posts
-  class Create
+  class Update
     include Web::Action
 
     before :authenticate!
@@ -12,20 +12,19 @@ module Web::Controllers::Posts
     end
 
     def call(params)
-      params.valid? ? create_post : render_new
+      params.valid? ? update_post : render_edit
     end
 
     private
 
-    def create_post
-      params[:post][:user_id] = current_user.id
-      post = PostRepository.new.create(params[:post])
+    def update_post
+      post = PostRepository.new.update(params[:id], params[:post])
       redirect_to routes.post_path(post.id)
     end
 
-    def render_new
+    def render_edit
       flash[:errors] = params.errors[:post]
-      redirect_to routes.new_post_path
+      redirect_to routes.edit_post_path(params[:id])
     end
   end
 end

@@ -1,3 +1,7 @@
 h2= post.title
 p= "author: #{post.user.full_name}"
 p= post.body
+- if user_signed_in?
+  = link_to 'edit post', routes.edit_post_path(post.id)
+  = form_for :post, routes.post_path(post.id), method: :delete do
+    = submit 'delete post'
