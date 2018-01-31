@@ -1,6 +1,8 @@
 = form_for form, class: 'test' do
-  = label :title
-  = text_field :title
-  = label :body
-  = text_area :body
-  = submit submit_label
+  - div class: 'form-group'
+  - label :title
+  - text_field :title, class: 'form-control', placeholder: 'title'
+  - div class: 'form-group'
+  - label :body
+  - text_area :body, class: 'form-control', placeholder: 'type your post here...', rows: '10'
+  - submit submit_label, class: 'btn btn-primary col mt-4'
