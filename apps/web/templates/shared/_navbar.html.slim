@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light.header
+nav.navbar.navbar-expand-lg.navbar-light.header.mb-3
   .navbar-brand
     = link_to routes.root_path
       = img(src: '/assets/logo.png', class: 'w-25')
@@ -12,13 +12,13 @@ nav.navbar.navbar-expand-lg.navbar-light.header
         = link_to 'home', routes.root_path, class: 'nav-link'
       li.nav-item
         = link_to 'new post', routes.new_post_path, class: 'nav-link'
-    ul.navbar-nav
+    ul.nav.justify-content-around
       - if user_signed_in?
         li.nav-item
           = form_for :session, routes.destroy_session_path, method: :delete do
-            = submit "Sign out, #{current_user.email}", class: 'nav-link btn btn-dark text-white'
+            = submit "Sign out, #{current_user.full_name}", class: 'nav-link btn btn-dark text-white'
       - else
-        li.nav-item
+        li.nav-item.mx-md-1
           = link_to 'sign up', routes.new_registration_path, class: 'nav-link btn btn-dark text-white'
-        li.nav-item.ml-2
+        li.nav-item.mx-md-1
           = link_to 'sign in', routes.new_session_path, class: 'nav-link btn btn-dark text-white'

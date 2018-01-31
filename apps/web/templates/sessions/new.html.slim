@@ -1,2 +1,14 @@
-h2 Sign In!
-= form
+.row.justify-content-center.auth
+  .auth__sign-in.col
+    .card
+      .card-header.text-center
+        h3 Sign In
+      .card-body
+        = form_for :session, routes.sessions_path do
+          - div class: 'form-group'
+            - label :email
+            - text_field :email, class: 'form-control', placeholder: 'your email'
+          - div class: 'form-group'
+            - label :password
+            - password_field :password, class: 'form-control', placeholder: 'your password'
+          - submit 'Sign in', class: 'btn btn-primary col mt-4'
