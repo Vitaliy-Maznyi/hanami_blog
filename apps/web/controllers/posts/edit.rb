@@ -8,7 +8,7 @@ module Web::Controllers::Posts
 
     def call(params)
       @post = PostRepository.new.find_with_author(params[:id])
-      redirect_to routes.root_path unless current_user_author?
+      redirect_to routes.root_path unless current_user_author? || current_user_admin?
     end
 
     private

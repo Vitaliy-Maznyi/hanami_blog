@@ -4,6 +4,7 @@ module Web
       action.class_eval do
         # before :authenticate! # uncomment if you want to add it to all actions
         expose :current_user
+        expose :current_user_admin?
         expose :user_signed_in?
       end
     end
@@ -22,6 +23,10 @@ module Web
 
     def current_user
       @current_user ||= UserRepository.new.find(session[:user_id])
+    end
+
+    def current_user_admin?
+      !!current_user&.admin
     end
   end
 end

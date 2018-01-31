@@ -17,7 +17,7 @@
     .row
       .col.post__body
         p= post.body
-    - if user_signed_in? && current_user_author?
+    - if user_signed_in? && current_user_author? || current_user_admin?
       .row
         .col.d-flex.justify-content-end
           = link_to 'edit post', routes.edit_post_path(post.id), class: 'btn btn-warning d-inline-block mx-1'
