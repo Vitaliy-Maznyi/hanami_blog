@@ -2,7 +2,7 @@ nav.navbar.navbar-expand-lg.navbar-light.header.mb-3
   .navbar-brand
     = link_to routes.root_path
       = img(src: '/assets/logo.png', class: 'w-25')
-    | Hanami blog
+    = link_to 'Hanami blog', routes.root_path
   button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     span.navbar-toggler-icon
 

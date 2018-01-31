@@ -1,3 +1,14 @@
 .navbar
-  &-brand
-    max-width: 160px
+  &-light &-brand
+      max-width: 160px
+      a
+        color: $color-pink
+        &:hover
+          text-decoration: none
+  &-light &-nav
+    .active > .nav-link
+      color: $color-pink
+    .nav-link
+      color: $color-white
+      &:hover
+        color: $color-pink

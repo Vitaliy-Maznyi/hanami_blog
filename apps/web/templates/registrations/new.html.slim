@@ -1,2 +1,23 @@
-h2 Sign Up!
-= registration_form
+.row.justify-content-center.auth
+  .auth__sign-in.col
+    .card
+      .card-header.text-center
+        h3 Sign up
+      .card-body
+        = form_for :user, routes.registrations_path do
+          - div class: 'form-group'
+          - label :email
+          - text_field :email, class: 'form-control', placeholder: 'email'
+          - div class: 'form-group'
+          - label :first_name
+          - text_field :first_name, class: 'form-control', placeholder: 'first name'
+          - div class: 'form-group'
+          - label :last_name
+          - text_field :last_name, class: 'form-control', placeholder: 'last name'
+          - div class: 'form-group'
+          - label :password
+          - password_field :password, class: 'form-control', placeholder: 'password'
+          - div class: 'form-group'
+          - label :password_confirmation
+          - password_field :password_confirmation, class: 'form-control', placeholder: 'confirm password'
+          - submit 'Sign up', class: 'btn btn-primary col mt-4'
