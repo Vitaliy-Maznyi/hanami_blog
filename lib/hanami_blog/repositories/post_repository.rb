@@ -4,7 +4,7 @@ class PostRepository < Hanami::Repository
   end
 
   def posts_with_authors
-    aggregate(:user).map_to(Post).to_a
+    aggregate(:user).map_to(Post).to_a.reverse
   end
 
   def find_with_author(id)
