@@ -6,8 +6,8 @@ module Web::Controllers::Posts
 
     params do
       required(:post).schema do
-        required(:title) { filled? & str? & size?(3..20) }
-        required(:body) { filled? & str? & size?(3..400) }
+        required(:title) { filled? & str? & min_size?(3) }
+        required(:body) { filled? & str? & min_size?(3) }
       end
     end
 
