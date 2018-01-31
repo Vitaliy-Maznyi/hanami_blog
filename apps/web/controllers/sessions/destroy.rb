@@ -6,6 +6,7 @@ module Web::Controllers::Sessions
 
     def call(_)
       session[:user_id] = nil
+      flash[:success] = 'You\'ve successfully signed out!'
       redirect_to routes.root_path
     end
   end

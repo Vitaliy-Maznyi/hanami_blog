@@ -19,6 +19,7 @@ module Web::Controllers::Posts
 
     def update_post
       post = PostRepository.new.update(params[:id], params[:post])
+      flash[:success] = 'You\'ve successfully updated your post!'
       redirect_to routes.post_path(post.id)
     end
 

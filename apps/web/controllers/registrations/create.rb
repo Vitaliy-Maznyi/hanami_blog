@@ -15,6 +15,7 @@ module Web::Controllers::Registrations
       if params.valid?
         create_user
         create_session
+        flash[:success] = 'Congratulations! You\'ve successfully signed up!'
         redirect_to routes.root_path
       else
         flash[:errors] = params.errors[:user]

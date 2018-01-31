@@ -1,9 +1,23 @@
-- if flash[:notice]
-  = flash[:notice]
-- if flash[:errors] && flash[:errors].is_a?(Hash)
-  ul
-    - flash[:errors].each do |error|
-      li
-        = "#{error.first.to_s} " "#{error.last.last.to_s}"
-- else
-  = flash[:errors]
+- if flash[:notice] || flash[:errors] || flash[:success]
+  - if flash[:success]
+    .alert.alert-success role='alert'
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+      p.mb-0= flash[:success]
+  - if flash[:notice]
+    .alert.alert-primary role='alert'
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+      p.mb-0= flash[:notice]
+  - if flash[:errors]
+    .alert.alert-danger role='alert'
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+      h3 Oops..
+      -if flash[:errors].is_a?(Hash)
+        ul.list-group
+          - flash[:errors].each do |error|
+            li.list-group-item
+              = "#{error.first.to_s} " "#{error.last.last.to_s}"
+      - else
+        p.mb-0= flash[:errors]

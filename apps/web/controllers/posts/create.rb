@@ -20,6 +20,7 @@ module Web::Controllers::Posts
     def create_post
       params[:post][:user_id] = current_user.id
       post = PostRepository.new.create(params[:post])
+      flash[:success] = 'You\'ve successfully added new post!'
       redirect_to routes.post_path(post.id)
     end
 

@@ -13,10 +13,11 @@ module Web::Controllers::Sessions
       user = Auth::UserFinder.new(params[:session]).call
 
       if user.nil?
-        flash[:notice] = 'Invalid email or password'
+        flash[:errors] = 'Invalid email or password'
         redirect_to routes.new_session_path
       else
         session[:user_id] = user.id
+        flash[:success] = 'You\'ve successfully signed in!'
         redirect_to routes.root_path
       end
     end
