@@ -25,7 +25,7 @@
             = submit 'delete post', class: 'btn btn-danger'
 .row
   .col
-    - comments.each do |comment|
+    - post.comments.each do |comment|
       p= comment.user.full_name
       p= comment.created_at
       p= comment.body

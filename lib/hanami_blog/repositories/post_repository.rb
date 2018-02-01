@@ -8,7 +8,7 @@ class PostRepository < Hanami::Repository
     aggregate(:user).map_to(Post).order { created_at.desc }.to_a
   end
 
-  def find_with_author(id)
-    aggregate(:user).map_to(Post).where(id: id).one
+  def find_with_author_and_comments(id)
+    aggregate(:user, comments: :user).map_to(Post).where(id: id).one
   end
 end

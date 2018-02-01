@@ -6,8 +6,7 @@ module Web::Controllers::Posts
     expose :comments
 
     def call(params)
-      @post = PostRepository.new.find_with_author(params[:id])
-      @comments = CommentRepository.new.comments_with_authors
+      @post = PostRepository.new.find_with_author_and_comments(params[:id])
     end
   end
 end
