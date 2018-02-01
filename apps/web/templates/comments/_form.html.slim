@@ -1,0 +1,5 @@
+= form_for :comment, routes.comments_path, class: 'mb-5' do
+  - hidden_field :post_id, value: post.id
+  - div class: 'form-group'
+  - text_area :body, class: 'form-control', placeholder: 'type your comment here...', rows: '2'
+  - submit 'add comment', class: 'btn btn-primary mt-1'

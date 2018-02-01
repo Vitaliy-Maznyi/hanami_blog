@@ -1,5 +1,6 @@
 root to: 'posts#index'
 resources :posts
+resources :comments, only: [:create, :destroy]
 
 get '/sign_in', to: 'sessions#new', as: :new_session
 post '/sign_in', to: 'sessions#create', as: :sessions

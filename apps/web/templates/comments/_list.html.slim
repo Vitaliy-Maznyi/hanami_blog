@@ -1,0 +1,9 @@
+- post.comments.each do |comment|
+  .card.mt-1
+    .card-header
+      = form_for :comment, routes.comment_path(comment.id), method: :delete, class: 'float-right' do
+        = hidden_field :post_id, value: post.id
+        = submit '✕', class: 'btn btn-outline-dark btn-sm'
+      = comment.user.full_name + ' • ' + "#{comment.created_at}"
+    .card-body
+      = comment.body
