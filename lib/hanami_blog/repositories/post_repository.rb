@@ -1,10 +1,11 @@
 class PostRepository < Hanami::Repository
   associations do
     belongs_to :user
+    has_many :comments
   end
 
   def posts_with_authors
-    aggregate(:user).map_to(Post).to_a.reverse
+    aggregate(:user).map_to(Post).order { created_at.desc }.to_a
   end
 
   def find_with_author(id)
