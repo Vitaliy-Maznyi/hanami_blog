@@ -1,15 +1,12 @@
+require_relative './post_params'
+
 module Web::Controllers::Posts
   class Update
     include Web::Action
 
     before :authenticate!
 
-    params do
-      required(:post).schema do
-        required(:title) { filled? & str? & min_size?(3) }
-        required(:body) { filled? & str? & min_size?(3) }
-      end
-    end
+    params PostParams
 
     def call(params)
       params.valid? ? update_post : render_edit

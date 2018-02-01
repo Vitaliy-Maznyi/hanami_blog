@@ -4,8 +4,6 @@ module Web::Controllers::Posts
 
     before :authenticate!
 
-    expose :post
-
     def call(params)
     end
   end

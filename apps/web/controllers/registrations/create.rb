@@ -1,15 +1,10 @@
+require_relative './registration_params'
+
 module Web::Controllers::Registrations
   class Create
     include Web::Action
 
-    params do
-      required(:user).schema do
-        required(:email).filled(:str?)
-        required(:first_name).filled(:str?)
-        required(:last_name).filled(:str?)
-        required(:password).filled(:str?, min_size?: 5).confirmation
-      end
-    end
+    params RegistrationParams
 
     def call(params)
       if params.valid?
