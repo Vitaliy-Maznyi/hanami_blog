@@ -1,9 +1,10 @@
 - post.comments.each do |comment|
-  .card.mt-1
+  .card.mt-2.comment
     .card-header
-      = form_for :comment, routes.comment_path(comment.id), method: :delete, class: 'float-right' do
-        = hidden_field :post_id, value: post.id
-        = submit '✕', class: 'btn btn-outline-dark btn-sm'
-      = comment.user.full_name + ' • ' + "#{comment.created_at}"
+      - if current_user_author? || current_user_admin? || current_user_commenter?(comment)
+        = form_for :comment, routes.comment_path(comment.id), method: :delete, class: 'float-right' do
+          = hidden_field :post_id, value: post.id
+          = submit '✕', class: 'btn btn-outline-dark btn-sm comment__delete'
+      = comment.user.full_name + ' • ' + comment.created_at.strftime("%B %d, %Y") + ' at ' + comment.created_at.strftime("%H:%M")
     .card-body
       = comment.body
